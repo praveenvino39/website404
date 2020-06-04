@@ -52,13 +52,10 @@ def processorder(request):
         for item in cartitems:
             neworder=Order(order_id=order, title=item.title, quantity=item.quantity,size=item.size,color=item.color)
             neworder.save()
-        # mycart = Cartitem.objects.filter(user=request.user)
-        # for item in mycart:
-        #     item.delete()
         paytmParams = {
 
             # Find your MID in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
-            "MID": "OXSLCG19790467773500",
+            "MID": os.environ.get('MID'),
 
             # Find your WEBSITE in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
             "WEBSITE": "WEBSTAGING",
@@ -86,12 +83,12 @@ def processorder(request):
             "TXN_AMOUNT": str(total),
 
             # on completion of transaction, we will send you the response on this URL
-            "CALLBACK_URL": 'http://127.0.0.1:8000/order/verify-payment',
+            "CALLBACK_URL": 'https://shopno404.herokuapp.com/order/verify-payment',
         }
 
         # Generate checksum for parameters we have
         # Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys
-        checksum = Checksum.generate_checksum(paytmParams, "xjTU8MaFEEF@n61p")
+        checksum = Checksum.generate_checksum(paytmParams, os.environ.get('PAYTM_KEY'))
 
         # for Staging
         url = "https://securegw-stage.paytm.in/order/process"
