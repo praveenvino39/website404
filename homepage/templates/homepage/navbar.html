@@ -1,0 +1,73 @@
+<div class="site-navbar bg-white py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          </form>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="{% url 'homepage' %}"" class="js-logo-clone">Shop No.404</a>
+            </div>
+          </div>
+          <div class="main-nav mx-auto d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+
+                <li class="{% if request.path == '/' %}active{% endif %}">
+                  <a href="{% url 'homepage' %}">Home</a>
+                </li>
+                <li class="{% if request.path == '/shop/' %}active{% endif %}"><a href="{% url 'shop' %}">Shop</a></li>
+                <li class="has-children">
+                  <a>Catergory</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Funny</a></li>
+                    <li><a href="#">Movie</a></li>
+                    <li><a href="#">Geek</a></li>
+                    <li><a href="#">Trending</a></li>
+                  </ul>
+                </li>
+                <li class="{% if request.path == '/shop/featured' %}active{% endif %}"><a href="{% url 'featured' %}">Featured</a></li>
+                <li class="has-children {% if request.path == '/about' %}active{% endif %} {% if request.path == '/contact' %}active{% endif %}">
+                  <a>Help</a>
+                  <ul class="dropdown">
+                    <li><a href="{% url 'about' %}">Track order</a></li>
+                    <li><a href="{% url 'about' %}">Bulk order</a></li>
+                    <li><a href="{% url 'about' %}">About us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact us</a></li>
+                  </ul>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                  <form action="{% url 'logout' %}" method="post">
+                    <button class=" btn btn-outline-danger" type="submit">Logout</button>
+                    {% csrf_token %}
+                  </form>
+                </li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'signup' %}">Signup</a></li>
+                 {% endif %}
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+          {% if user.is_authenticated %}
+            <a href="#" class="icons-btn d-inline-block"><span class="icon-heart-o"></span></a>
+            <a href="{% url 'cart' %}" class="icons-btn d-inline-block bag">
+              <span class="icon-shopping-bag"></span>{% for itemcount in user.cart.all %}
+              <span class="number">{{ forloop.counter }}</span>{% endfor %}
+            </a>
+            {% endif %}
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>

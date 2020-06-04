@@ -1,0 +1,24 @@
+{% extends 'product/base.html' %}
+{% block body %}
+<center>
+<div class="mt-5" >
+    <div class="row" >
+    <div class="col-lg-6 col-md-6 mt-6">
+            <h2>Checkout</h2>
+<form action="" method="POST">
+    <input type="text" placeholder="Name" style="width: 60%" class="form-control mt-3" name="name" id="">
+    <input type="text" placeholder="Email" style="width: 60%" class="form-control mt-3" name="email" id="">
+    <input type="text" placeholder="Phone Number" style="width: 60%" class="form-control mt-3" name="phonenumber" id="">
+    <textarea name="address" class="form-control mt-3" style="width:60%;height: 200px;" placeholder="Address"></textarea>
+    <input type="text" placeholder="Pincode" style="width: 60%" class="form-control mt-3" name="pincode" >
+</form>
+    </div>
+    <div class="col-lg-3 col-md-3 mt-3">
+        {{ product.price }}
+    </div>
+</div>
+</div>
+</center>
+
+<!--{{ product.title }}-->
+{% endblock%}

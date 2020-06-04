@@ -1,0 +1,21 @@
+{% extends 'homepage/base.html' %}
+{% block body %}
+{% include 'homepage/navbar.html' %}
+{% load static %}
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert {% if messages.tags == error %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
+        {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+{% endif %}
+<form method="POST">
+    {{ form.as_p }}
+{% csrf_token %}
+<button class="btn btn-primary" type="submit">Signup</button>
+    </form>
+{% endblock %}

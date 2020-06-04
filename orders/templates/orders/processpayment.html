@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>Merchant Checkout Page</title>
+</head>
+<body>
+<center><h1>Please do not refresh this page...</h1></center>
+<form method="POST" action={{url}} name="paytm_form">
+{% for key, value in paytmParams.items %}
+	<input name={{key}} value={{value}}>
+{% endfor %}
+{% csrf_token %}
+<input type="hidden" name="CHECKSUMHASH" value={{checksum}}>
+</form>
+<script>
+ document.paytm_form.submit();
+</script>
+</body>
+</html>

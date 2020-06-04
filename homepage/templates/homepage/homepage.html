@@ -1,0 +1,56 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block title %}Shop No.404{% endblock %}
+{% block body %}
+{% include 'homepage/navbar.html' %}
+<div class="mx-auto mt-3 mb-2">
+  {% if messages %}
+  {% for message in messages %}
+    <div class="alert {% if message.tags %} alert-{{ message.tags }} {% endif %} alert-dismissible fade show" role="alert">
+        <center>{{ message }}</center>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+<div class="site-blocks-cover" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 ml-auto order-md-2 align-self-start">
+            <div class="site-block-cover-content">
+            <h2 class="sub-title">#New Summer Collection 2020</h2>
+            <h1>Quarantine Sales</h1>
+            <p><a href="#" class="btn btn-black rounded-0">Shop Now</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 order-1 align-self-end">
+            <img src="{% static 'homepage/images/model_3.png' %}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="title-section mb-5 col-12">
+            <h2 class="text-uppercase">Popular Products</h2>
+          </div>
+        </div>
+        <div class="row">
+            {% for product in products %}
+          <div class="col-lg-4 col-md-6 item-entry mb-4">
+              {% for productimg in product.images.all %}
+            <a href="{% url 'showproduct' product.slug %}"" class="product-item md-height bg-white d-block">
+              <img src="{{ productimg.main.url }}" alt="Image" class="img-fluid">
+            </a>
+              {% endfor %}
+            <h2 class="item-title"><a href="{% url 'showproduct' product.slug %}"">{{ product.title }}</a></h2>
+            <strong class="item-price">Rs.{{ product.price }}</strong>
+          </div>
+            {% endfor %}
+          </div>
+        </div>
+</div>
+{% endblock %}

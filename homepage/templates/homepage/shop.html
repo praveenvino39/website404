@@ -1,0 +1,60 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block body %}
+{% include 'homepage/navbar.html' %}
+
+<div class="site-blocks-cover inner-page" data-aos="fade">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 ml-auto order-md-2 align-self-start">
+                <div class="site-block-cover-content">
+                    <h2 class="sub-title">#New Summer Collection 2019</h2>
+                    <h1>Arrivals Sales</h1>
+                    <p><a href="#" class="btn btn-black rounded-0">Shop Now</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 order-1 align-self-end">
+                <img src="{% static 'homepage/images/model_4.png' %}" alt="Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="title-section mb-5 col-12">
+                <h2 class="text-uppercase">Our Collections</h2>
+            </div>
+        </div><div class="row align mt-1 ml-5 mr-5">
+    <div class="col-md-12 mb-5">
+        <div class="d-flex">
+            <div class="btn-group"><h4>Sort by</h4>
+                <button type="button" class="btn btn-white ml-3 btn-sm dropdown-toggle px-4" id="dropdownMenuReference"
+                        data-toggle="dropdown">{{ current }}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                    <a class="dropdown-item" href="{% url 'shop' %}">New - Old</a>
+                    <a class="dropdown-item" href="{% url 'shopold' %}">Old - New</a>
+                    <a class="dropdown-item" href="{% url 'shophigh' %}">High Price to Low Price</a>
+                    <a class="dropdown-item" href="{% url 'shoplow' %}">Low Price to High Price</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-lg-4 col-md-6 item-entry mb-4">
+                {% for productimg in product.images.all %}
+                <a href="{% url 'showproduct' product.slug %}"" class="product-item md-height bg-white d-block">
+                <img src="{{ productimg.main.url }}" alt="Image" class="img-fluid">
+                </a>
+                {% endfor %}
+                <h2 class="item-title"><a href="{% url 'showproduct' product.slug %}"">{{ product.title }}</a></h2>
+                <strong class="item-price">Rs.{{ product.price }}</strong>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,118 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="{% static 'homepage/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'homepage/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href=" {% static 'homepage/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href=" {% static 'homepage/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'homepage/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'homepage/css/owl.theme.default.min.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'homepage/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'homepage/css/style.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="site-mobile-menu"></div>
+{% block body %}
+{% endblock %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <h3 class="footer-heading mb-4">Promo</h3>
+            <a href="#" class="block-6">
+                <img src="{% static 'homepage/images/about_1.jpg' %}" alt="Image placeholder"
+                     class="img-fluid rounded mb-4">
+                <h3 class="font-weight-light  mb-0">Finding Your Perfect Shirts This Summer</h3>
+                <p>Promo from July 15 — 25, 2019</p>
+            </a>
+        </div>
+        <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="footer-heading mb-4">Quick Links</h3>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <ul class="list-unstyled">
+                        <li><a href="#">Sell your Artwork</a></li>
+                        <li><a href="#">Bulk order</a></li>
+                        <li><a href="#">Shopping cart</a></li>
+                        <li><a href="#">Track order</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <ul class="list-unstyled">
+                        <li><a href="#">Mobile commerce</a></li>
+                        <li><a href="#">Dropshipping</a></li>
+                        <li><a href="#">Website development</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <ul class="list-unstyled">
+                        <li><a href="#">Point of sale</a></li>
+                        <li><a href="#">Hardware</a></li>
+                        <li><a href="#">Software</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+                <h3 class="footer-heading mb-4">Contact Info</h3>
+                <ul class="list-unstyled">
+                    <li class="address">12 Model Hutment Road, CIT Nagar, Chennai, Tamil Nadu, India.</li>
+                    <li class="phone"><a href="tel://9551275395">+91 9551275395</a></li>
+                    <li class="email">shopno404@gmail.com</li>
+                </ul>
+            </div>
+
+            <div class="block-7">
+                <form action="{% url 'subscriber' %}" method="POST">
+                    <label for="email_subscribe" class="footer-heading">Subscribe</label>
+                    <div class="form-group">
+                        <input type="text" name="email" class="form-control py-4" id="email_subscribe"
+                               placeholder="Email">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-sm btn-primary" value="Send">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-5 mt-5 text-center">
+        <div class="col-md-12">
+            <p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright ©
+                <script>document.write(new Date().getFullYear());</script>
+                All rights reserved | Made with <i class="icon-heart" aria-hidden="true"></i> by <a
+                    href="{% url 'homepage' %}" class="text-primary">Shop N0.404</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+
+    </div>
+</div>
+<script src=" {% static 'homepage/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'homepage/js/jquery-ui.js' %}"></script>
+<script src="{% static 'homepage/js/popper.min.js' %}"></script>
+<script src="{% static 'homepage/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'homepage/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'homepage/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'homepage/js/aos.js' %}"></script>
+<script src="{% static 'homepage/js/main.js' %}"></script>
+<script src="{% static 'homepage/js/slick.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+</body>
+</html>
