@@ -15,7 +15,7 @@
 				<td>(Please do not press 'Refresh' or 'Back' button</td>
 			</tr>
 		</table>
-		<FORM NAME='TESTFORM' ACTION='http://127.0.01:8000/order/payment-status' METHOD='POST'>
+		<FORM NAME='TESTFORM' ACTION='https://shopno404.herokuapp.com/order/payment-status' METHOD='POST'>
             {% csrf_token %}
 			{% for key, value in response.items %}
 			<input type='text' name={{key}} value={{value}}>
