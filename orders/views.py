@@ -4,6 +4,7 @@ from cart.models import Cartitem
 from django.contrib import messages
 from orders.models import OrderId, ShippingDetail, Order
 import random
+import os
 from . import Checksum
 # Create your views here.
 
