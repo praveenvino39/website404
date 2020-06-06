@@ -19,7 +19,7 @@ class ShippingDetail(models.Model):
     zipcode = models.IntegerField()
     state = models.CharField(max_length=200)
     email = models.EmailField()
-    phone_number = models.BigintegerField()
+    phone_number = models.BigIntegerField() 
     address = models.TextField()
     note = models.TextField()
 
