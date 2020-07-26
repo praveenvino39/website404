@@ -153,7 +153,7 @@ def processorder(request):
                 "TXN_AMOUNT": str(total),
 
                 # on completion of transaction, we will send you the response on this URL
-                "CALLBACK_URL": 'https://shopno404.herokuapp.com/order/verify-payment/',
+                "CALLBACK_URL": 'http://shopno404.herokuapp.com/order/verify-payment/',
             }
 
             # Generate checksum for parameters we have
