@@ -1,12 +1,16 @@
-<html>
-<head>
-<title>Merchant Checkout Page</title>
-</head>
-<body>
-<center><h1>Please do not refresh this page...</h1></center>
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block title %}Societee{% endblock %}
+{% block body %}
+{% include 'homepage/navbar.html' %}
+<center>
+<img width="550" height="400" src="{% static 'orders/loading.gif' %}" alt="">
+<h1 class="text-success">Your payment is processing</h1>
+<h2 class="text-danger">Please do not refresh this page...</h2>
+</center>
 <form method="POST" action={{url}} name="paytm_form">
 {% for key, value in paytmParams.items %}
-	<input name={{key}} value={{value}}>
+	<input hidden name={{key}} value={{value}}>
 {% endfor %}
 {% csrf_token %}
 <input type="hidden" name="CHECKSUMHASH" value={{checksum}}>
@@ -14,5 +18,4 @@
 <script>
  document.paytm_form.submit();
 </script>
-</body>
-</html>
+{% endblock %}

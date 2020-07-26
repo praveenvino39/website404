@@ -5,6 +5,7 @@ from cart.models import Cartitem
 
 class OrderId(models.Model):
     order_id = models.IntegerField(primary_key=True)
+    amount = models.IntegerField(default=0)
     order_status = models.CharField(default='Initiated', blank=False, max_length=100)
     payment_status = models.CharField(default='Initiated', blank=False , max_length=100)
 
@@ -19,7 +20,8 @@ class ShippingDetail(models.Model):
     zipcode = models.IntegerField()
     state = models.CharField(max_length=200)
     email = models.EmailField()
-    phone_number = models.BigIntegerField() 
+    phone_number = models.BigIntegerField()
+    phone_number = models.BigIntegerField()
     address = models.TextField()
     note = models.TextField()
 

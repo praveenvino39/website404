@@ -13,7 +13,7 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a href="{% url 'homepage' %}"" class="js-logo-clone">Shop No.404</a>
+              <a href="{% url 'homepage' %}"" class="js-logo-clone">Societee</a>
             </div>
           </div>
           <div class="main-nav mx-auto d-none d-lg-block">
@@ -37,7 +37,7 @@
                 <li class="has-children {% if request.path == '/about' %}active{% endif %} {% if request.path == '/contact' %}active{% endif %}">
                   <a>Help</a>
                   <ul class="dropdown">
-                    <li><a href="{% url 'about' %}">Track order</a></li>
+                    <li><a href="{% url 'trackorder' %}">Track order</a></li>
                     <li><a href="{% url 'about' %}">Bulk order</a></li>
                     <li><a href="{% url 'about' %}">About us</a></li>
                     <li><a href="{% url 'contact' %}">Contact us</a></li>

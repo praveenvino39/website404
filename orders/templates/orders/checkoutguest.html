@@ -54,7 +54,7 @@
 <!--                  <option value="9">Dominican Republic</option>-->
 <!--                </select>-->
 <!--              </div>-->
-              <form action="{% url 'processorder' %}" method="POST">
+              <form action="{% url 'processorderguest' product.slug  %}" method="POST">
                 {% csrf_token %}
               <div class="form-group row">
                 <div class="col-md-6">
@@ -198,22 +198,22 @@
           </div>
           <div class="col-md-6">
 
-<!--            <div class="row mb-5">-->
-<!--              <div class="col-md-12">-->
-<!--                <h2 class="h3 mb-3 text-black">Coupon Code</h2>-->
-<!--                <div class="p-3 p-lg-5 border">-->
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h2 class="h3 mb-3 text-black">Coupon Code</h2>
+                <div class="p-3 p-lg-5 border">
 
-<!--                  <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>-->
-<!--                  <div class="input-group w-75">-->
-<!--                    <input type="text" class="form-control" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">-->
-<!--                    <div class="input-group-append">-->
-<!--                      <button class="btn btn-primary btn-sm px-4" type="button" id="button-addon2">Apply</button>-->
-<!--                    </div>-->
-<!--                  </div>-->
+                  <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
+                  <div class="input-group w-75">
+                    <input type="text" class="form-control" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary btn-sm px-4" type="button" id="button-addon2">Apply</button>
+                    </div>
+                  </div>
 
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
+                </div>
+              </div>
+            </div>
 
             <div class="row mb-5">
               <div class="col-md-12">
@@ -243,27 +243,38 @@
                   </table>
 
                   <div class="border p-3 mb-3">
-                    <div class="row">
-                    <input type="radio" value="online" class="ml-3 mr-3" name="paymentmode" id="paymentmode"><h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Pay Online</a></h3>
-                    </div>
+                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
+
                     <div class="collapse" id="collapsebank">
                       <div class="py-2">
-                        <p class="mb-0">Make your payment online. We accept all the major Credit and Debit cards, Net Banking, Paytm.</p>
+                        <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
                       </div>
                     </div>
                   </div>
 
                   <div class="border p-3 mb-3">
-                    <div class="row">
-                    <input type="radio" value="cod" class="ml-3 mr-3" name="paymentmode" id="paymentmode"><h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cash on delivery( Rs.50 COD Fees )</a></h3>
-                    </div>
+                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
+
                     <div class="collapse" id="collapsecheque">
                       <div class="py-2">
-                        <p class="mb-0">Pay after the order delivered. We charge extra Rs.50 for COD fees. Terms and condition applied.</p>
+                        <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
                       </div>
                     </div>
                   </div>
-                  <h6 class="text-success mt-3">We always recommed to pay online to get rid of COD fees. Kindly read our terms and conditions.</h6>
+
+                  <div class="border p-3 mb-5">
+                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
+
+                    <div class="collapse" id="collapsepaypal">
+                      <div class="py-2">
+                        <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="text" name="slug" hidden value= {{product.slug}} id="">
+                    <input type="text" name="size" hidden value= {{size}} id="">
+                    <input type="text" name="color" hidden value= {{color}} id="">
+                    <input type="text" name="quantity" hidden value= {{quantity}} id="">
                   <div class="form-group">
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
                   </div>

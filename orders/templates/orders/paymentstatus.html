@@ -3,7 +3,13 @@
 {% block title %}Societee{% endblock %}
 {% block body %}
 {% include 'homepage/navbar.html' %}
-<div class="mt-5" >
-    <h1 class="text-success" >{{reponsemessage}}</h1>
+<div class="mt-2" >
+    <center>
+        {% if responsecode == '01' %}
+        <img width="400" height="300" src="{% static 'orders/success.gif' %}"  alt="">
+        {% endif %}
+        <h3 class="text-success" >{{reponsemessage}}</h3>
+        <h5 class="mb-5">Order ID: {{orderid}}</h5>
+    </center>
 </div>
 {% endblock %}
