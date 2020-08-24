@@ -107,6 +107,7 @@ def processorderguest(request, slug):
 
 def processorder(request):
     if request.method == 'POST':
+        print('works')
         # try:
         items = Cartitem.objects.filter(user=request.user)
         total = 0
@@ -272,6 +273,9 @@ def sendit(toMail, order_id):
          ]
         }
     response = sg.client.mail.send.post(request_body=data)
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
 
 
 
