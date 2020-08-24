@@ -9,7 +9,7 @@ from django.http import HttpResponse
 
 def homepage(request):
     # products = Product.objects.all()
-    products = Product.objects.filter(featured=True)
+    products = Product.objects.filter(featured=True).order_by('-date')
     return render(request, 'homepage/homepage.html', {'products': products})
 
 

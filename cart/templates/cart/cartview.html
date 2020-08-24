@@ -17,7 +17,7 @@ Societee - Cart
 {% if is_empty %}
 <center class="pb-5 mt-5"><h2>Your cart is empty!</h2></center>
 {% else %}
-<div class="site-section">
+<div class="site-section px-0">
     <div class="container">
         <div class="row mb-5">
             <form class="col-md-12" method="post">
@@ -58,13 +58,22 @@ Societee - Cart
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="row mb-5">
+                <div class="row mb-0">
                     <div class="col-md-6">
-                        <a href="{% url 'homepage' %}">
-                            <button class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="text-black">Total</span>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <strong class="text-black">Rs.{{ total }}</strong>
+                            </div>
+                        </div>
+                        <a href="{% url 'checkout' %}" class="text-white">
+                            <button class="btn btn-outline-primary btn-sm btn-block">Checkout</button>
                         </a>
                     </div>
                 </div>
+            </div>
 <!--                <div class="row">-->
 <!--                    <div class="col-md-12">-->
 <!--                        <label class="text-black h4" for="coupon">Coupon</label>-->
@@ -78,43 +87,14 @@ Societee - Cart
 <!--                    </div>-->
 <!--                </div>-->
             </div>
-            <div class="col-md-6 pl-5">
-                <div class="row justify-content-end">
-                    <div class="col-md-7">
-                        <div class="row">
-                            <div class="col-md-12 text-right border-bottom mb-5">
-                                <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <span class="text-black">Subtotal</span>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <strong class="text-black">Rs.{{ total }}</strong>
-                            </div>
-                        </div>
-                        <div class="row mb-5">
-                            <div class="col-md-6">
-                                <span class="text-black">Total</span>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <strong class="text-black">Rs.{{ total }}</strong>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="{% url 'checkout' %}" class="text-white">
-                                    <button class="btn btn-primary btn-lg btn-block">Proceed To Checkout</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
+<style>
+    .row{
+        align-item: end;
+    }
+</style>
 {% endif %}
 {% endblock %}

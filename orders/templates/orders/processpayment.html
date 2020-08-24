@@ -8,14 +8,16 @@
 <h1 class="text-success">Your payment is processing</h1>
 <h2 class="text-danger">Please do not refresh this page...</h2>
 </center>
-<form method="POST" action={{url}} name="paytm_form">
-{% for key, value in paytmParams.items %}
-	<input hidden name={{key}} value={{value}}>
-{% endfor %}
-{% csrf_token %}
-<input type="hidden" name="CHECKSUMHASH" value={{checksum}}>
-</form>
+<form method="POST" action="https://securegw.paytm.in/theia/api/v1/showPaymentPage?mid=nzZtLZ85936435132832&orderId={{ order_id }}" name="paytm">
+         <table border="1">
+            <tbody>
+               <input  name="mid" value="nzZtLZ85936435132832">
+               <input  name="orderId" value="{{ order_id }}">
+               <input name="txnToken" value="{{ token }}">
+            </tbody>
+         </table>
+      </form>
 <script>
- document.paytm_form.submit();
+ document.paytm.submit();
 </script>
 {% endblock %}

@@ -23,11 +23,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 LOGIN_URL='/auth/login'
+LOGIN_REDIRECT_URL = '127.0.0.1:8000'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.43.248', 'localhost:8000', '127.0.0.1','shopno404.herokuapp.com']
+ALLOWED_HOSTS = ['192.168.43.248', '127.0.0.1','shopno404.herokuapp.com']
 
 
 # Application definition
@@ -55,6 +56,10 @@ INSTALLED_APPS = [
     'Auth',
     'cart',
     'orders',
+
+
+    #API
+    'rest_framework'
 ]
 
 LOGIN_REDIRECT_URL = '/'
@@ -159,4 +164,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

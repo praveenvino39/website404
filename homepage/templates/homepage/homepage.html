@@ -20,9 +20,9 @@
         <div class="row">
           <div class="col-md-6 ml-auto order-md-2 align-self-start">
             <div class="site-block-cover-content">
-            <h2 class="sub-title">#New Summer Collection 2020</h2>
-            <h1>Quarantine Sales</h1>
-            <p><a href="#" class="btn btn-black rounded-0">Shop Now</a></p>
+            <h2 class="sub-title">#New Trending Collection 2020</h2>
+            <h1>Special Sales</h1>
+            <p><a href="shop/" class="btn btn-black rounded-0">Shop Now</a></p>
             </div>
           </div>
           <div class="col-md-6 order-1 align-self-end">
@@ -35,22 +35,21 @@
       <div class="container">
         <div class="row">
           <div class="title-section mb-5 col-12">
-            <h2 class="text-uppercase">Popular Products</h2>
+            <h2 class="text-uppercase">New Arrivals</h2>
           </div>
         </div>
         <div class="row">
             {% for product in products %}
-          <div class="col-lg-4 col-md-6 item-entry mb-4">
-              {% for productimg in product.images.all %}
-            <a href="{% url 'showproduct' product.slug %}"" class="product-item md-height bg-white d-block">
-              <img src="{{ productimg.main.url }}" alt="Image" class="img-fluid">
+          <div class="col-lg-3 col-md-6 mb-4 item-entry">
+            <a href="{% url 'showproduct' product.slug %}" class="">
+              <img src="{{ product.mockup.url }}" alt="Image" class="img-fluid">
             </a>
-              {% endfor %}
-            <h2 class="item-title"><a href="{% url 'showproduct' product.slug %}"">{{ product.title }}</a></h2>
+            <h2 class="item-title mt-2"><a href="{% url 'showproduct' product.slug %}">{{ product.title }}</a></h2>
             <strong class="item-price">Rs.{{ product.price }}</strong>
           </div>
             {% endfor %}
           </div>
+        <center><a href="{% url 'shop' %}" class="btn-primary mt-5 btn-md btn">Shop More</a></center>
         </div>
 </div>
 {% endblock %}

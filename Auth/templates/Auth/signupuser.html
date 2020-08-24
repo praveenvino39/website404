@@ -3,19 +3,26 @@
 {% include 'homepage/navbar.html' %}
 {% load static %}
 {% if messages %}
-  {% for message in messages %}
-    <div class="alert {% if messages.tags == error %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
-        {{ message }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+{% for message in messages %}
+<div class="alert {% if messages.tags == error %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 {% endfor %}
 
 {% endif %}
-<form method="POST">
-    {{ form.as_p }}
-{% csrf_token %}
-<button class="btn btn-primary" type="submit">Signup</button>
+<hr>
+<center>
+    <h4>Sign-up</h4>
+    <form method="POST">
+        <input type="text" placeholder='Username' style='width: 50%' name='username' class='form-control'/>
+        <input type="password" placeholder='Password' style='width: 50%' name='password1' class='form-control mt-3'/>
+        <input type="password" placeholder='Re-enter password' style='width: 50%' name='password2' class='form-control mt-3'/>
+        {% csrf_token %}
+        <button class="mt-2 btn btn-primary" type="submit">Login</button>
     </form>
+    <hr>
+</center>
 {% endblock %}

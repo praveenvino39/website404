@@ -12,21 +12,17 @@ class Product(models.Model):
     price = models.IntegerField(default=0)
     featured = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True)
-    color1 = models.CharField(blank=True, max_length=10)
-    color2 = models.CharField(blank=True, max_length=10)
-    color3 = models.CharField(blank=True, max_length=10)
+    color = models.CharField(null=True,max_length=10)
+    mockup = models.ImageField(null=True,upload_to='product/image')
+    design = models.ImageField(null=True,upload_to='product/image')
 
     def __str__(self):
         return self.title
 
 class ProductImage(models.Model):
     title = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    main = models.ImageField(upload_to='product/image')
-    color1 = models.ImageField(blank=True,  upload_to='product/image')
-    color2 = models.ImageField(blank=True, upload_to='product/image')
-    color3 = models.ImageField(blank=True, upload_to='product/image')
-    back = models.ImageField(upload_to='product/image')
-    chart = models.ImageField(upload_to='product/image')
+    mockup = models.ImageField(upload_to='product/image')
+    design = models.ImageField(upload_to='product/image')
 
     def __str__(self):
         return str(self.title)

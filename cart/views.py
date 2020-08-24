@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.utils.safestring import mark_safe
 from product.models import Product
 from .models import Cartitem
 from django.http import HttpResponse
@@ -32,21 +34,12 @@ def removeitem(request, id):
     return redirect('cart')
 
 
-@login_required
 def addtocart(request, slug):
     if request.method == 'POST':
         if request.POST['btn'] == 'addtocart':
             return addtocartfunction(request, slug)
-            # if request.POST.get('size') == 'none' or request.POST.get('color') == 'none':
-            #     messages.error(request, 'Choose your size and color.', extra_tags='danger')
-            #     return redirect('showproduct', slug)
-            # product = get_object_or_404(Product, slug=slug)
-            # newitem = Cartitem(user=request.user, title=product.title, size=request.POST.get('size'), color=request.POST.get('color'), quantity=request.POST.get('quantity'), price=product.price)
-            # newitem.save()
-            # messages.success(request, 'Item Added to Cart.')
-            # return redirect('homepage')
         elif request.POST['btn'] == 'buynow':
-            if request.POST.get('size') == 'none' or request.POST.get('color') == 'none':
+            if request.POST.get('size') == 'none':
                 messages.error(request, 'Choose your size and color.', extra_tags='danger')
                 return redirect('showproduct', slug)
             print('Buy Now')
@@ -58,6 +51,8 @@ def addtocart(request, slug):
             return render(request, 'orders/checkoutguest.html',
                           {'product': product, 'size': size, 'color': color, 'quantity': quantity,
                            'total': product.price})
+    else:
+        return redirect('homepage')        
 
 
 @login_required
@@ -84,5 +79,5 @@ def addtocartfunction(request, slug):
     newitem = Cartitem(user=request.user, title=product.title, size=request.POST.get('size'),
                        color=request.POST.get('color'), quantity=request.POST.get('quantity'), price=product.price)
     newitem.save()
-    messages.success(request, 'Item Added to Cart.')
+    messages.success(request, mark_safe('Item added to cart  <b><a href="\cart">View Cart</a></b>'))
     return redirect('homepage')

@@ -8,7 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
     <link rel="stylesheet" href="{% static 'homepage/fonts/icomoon/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <link rel="stylesheet" href="{% static 'homepage/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href=" {% static 'homepage/css/magnific-popup.css' %}">
     <link rel="stylesheet" href=" {% static 'homepage/css/jquery-ui.css' %}">
@@ -22,6 +25,7 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+<script src="{% static 'homepage/js/vue.js' %}"></script>
 <div class="site-mobile-menu"></div>
 {% block body %}
 {% endblock %}
