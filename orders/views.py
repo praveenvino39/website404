@@ -250,12 +250,28 @@ def generate_order_id():
 
 def sendit(toMail, order_id):
     sg = sendgrid.SendGridAPIClient('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')
-    from_email = Email("praveena4e@gmail.com")
-    subject = "Order Confirmation!"
-    to_email = Email(toMail)
-    content = Content("text/plain", "Hello, {}".format(order_id))
-    mail = Mail(from_email, subject, to_email, content)
-    response = sg.client.mail.send.post(request_body=mail.get())
+    data = {
+         "personalizations": [
+          {
+             "to": [
+              {
+                 "email": toMail
+              }
+          ],
+             "subject": "Hello World from the SendGrid Python Library!"
+         }
+         ],
+         "from": {
+             "email": "praveena4e@gmail.com"
+          },
+         "content": [
+         {
+             "type": "text/plain",
+            "value": "Hello, {}".format(order_id)
+         }
+         ]
+        }
+    response = sg.client.mail.send.post(request_body=data)
 
 
 
