@@ -80,4 +80,4 @@ def addtocartfunction(request, slug):
                        color=request.POST.get('color'), quantity=request.POST.get('quantity'), price=product.price)
     newitem.save()
     messages.success(request, mark_safe('Item added to cart  <b><a href="\cart">View Cart</a></b>'))
-    return redirect('homepage')
+    return redirect('showproduct', slug)
