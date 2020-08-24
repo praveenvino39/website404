@@ -51,7 +51,7 @@
           <div class="icons">
 <!--            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>-->
           {% if user.is_authenticated %}
-            <a href="#" class="icons-btn d-inline-block"><span class="icon-heart-o"></span></a>
+<!--             <a href="#" class="icons-btn d-inline-block"><span class="icon-heart-o"></span></a> -->
             <a href="{% url 'cart' %}" class="icons-btn d-inline-block bag">
               <span class="icon-shopping-bag"></span>{% for itemcount in user.cart.all %}
               <span class="number">{{ forloop.counter }}</span>{% endfor %}
