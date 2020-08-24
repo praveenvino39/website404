@@ -13,8 +13,8 @@ class Product(models.Model):
     featured = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True)
     color = models.CharField(null=True,max_length=10)
-    mockup = models.ImageField(null=True,upload_to='product/image')
-    design = models.ImageField(null=True,upload_to='product/image')
+    mockup = models.CharField(max_length=200)
+    design = models.CharField(max_length=200)
 
     def __str__(self):
         return self.title
