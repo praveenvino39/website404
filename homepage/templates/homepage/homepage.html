@@ -42,7 +42,7 @@
             {% for product in products %}
           <div class="col-lg-3 col-md-6 mb-4 item-entry">
             <a href="{% url 'showproduct' product.slug %}" class="">
-              <img src="{{ product.mockup.url }}" alt="Image" class="img-fluid">
+              <img src="{{ product.mockup }}" alt="Image" class="img-fluid">
             </a>
             <h2 class="item-title mt-2"><a href="{% url 'showproduct' product.slug %}">{{ product.title }}</a></h2>
             <strong class="item-price">Rs.{{ product.price }}</strong>
