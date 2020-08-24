@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from sendgrid import SendGridAPIClient
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
 from sendgrid.helpers.mail import Mail
 import json
 import requests
@@ -246,78 +249,13 @@ def generate_order_id():
 
 
 def sendit(mail, order_id):
-    message = Mail(
-        from_email='praveena4e@gmail.com',
-        to_emails=mail,
-        subject='Case Factory - Order Confirmed',
-        html_content="""
-        <body style='margin: 0 !important; padding: 0 !important; background-color: #eeeeee;' bgcolor='#eeeeee'>
-    <table border='0' cellpadding='0' cellspacing='0' width='100%'>
-        <tr>
-            <td align='center' style='background-color: #eeeeee;' bgcolor='#eeeeee'>
-                <table align='center' border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width:600px;'>
-                    <tr>
-                        <td align='center' valign='top' style='font-size:0; padding: 35px;' bgcolor='#000000'>
-                            <div style='display:inline-block; max-width:50%; min-width:100px; vertical-align:top; width:100%;'>
-                                <table align='left' border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width:300px;'>
-                                    <tr>
-                                        <td align='left' valign='top' style='font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 48px;' class='mobile-center'>
-                                            <h1 style='font-size: 36px; font-weight: 800; margin: 0; color: #ffffff;'>Case Factory</h1>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div style='display:inline-block; max-width:50%; min-width:100px; vertical-align:top; width:100%;' class='mobile-hide'>
-                                <table align='left' border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width:300px;'>
-                                    <tr>
-                                        <td align='right' valign='top' style='font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; line-height: 48px;'>
-                                            <table cellspacing='0' cellpadding='0' border='0' align='right'>
-                                                <tr>
-                                                    <td style='font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400;'>
-                                                        <p style='font-size: 18px; font-weight: 400; margin: 0; color: #ffffff;'><a href='http://127.0.0.1:8000' target='_blank' style='color: #ffffff; text-decoration: none;'>Shop &nbsp;</a></p>
-                                                    </td>
-                                                    <td style='font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 24px;'> <a href='http://127.0.0.1:8000' target='_blank' style='color: #ffffff; text-decoration: none;'><img src='https://img.icons8.com/color/48/000000/small-business.png' width='27' height='23' style='display: block; border: 0px;' /></a> </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align='center' style='padding: 35px 35px 20px 35px; background-color: #ffffff;' bgcolor='#ffffff'>
-                            <table align='center' border='0' cellpadding='0' cellspacing='0' width='100%' style='max-width:600px;'>
-                                <tr>
-                                    <td align='center' style='font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 25px;'> <img src='https://img.icons8.com/carbon-copy/100/000000/checked-checkbox.png' width='125' height='120' style='display: block; border: 0px;' /><br>
-                                        <h2 style='font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;'> Thank You For Your Order! </h2>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align='left' style='font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding-top: 10px;'>
-                                        <p style='font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;'> Your order will get delivered soon. Due to COVID-19 delivery period may get longer than usual. Thank you for your co-operation. </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align='left' style='padding-top: 20px;'>
-                                        <table cellspacing='0' cellpadding='0' border='0' width='100%'>
-                                            <tr>
-                                                <td width='75%' align='left' bgcolor='#eeeeee' style='font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;'> Order ID # </td>
-                                                <td width='25%' align='left' bgcolor='#eeeeee' style='font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;'> {} </td>
-                </table>
-            </td>
-        </tr>
-    </table>
-</body>        
-        """.format(order_id))
-    try:
-        sg = SendGridAPIClient('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')
-        response = sg.send(message)
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
-    except Exception as e:
-        print(e.message)
+    sg = sendgrid.SendGridAPIClient('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')
+    from_email = Email("praveena4e@gmail.com")
+    subject = "Order Confirmation!"
+    to_email = Email(mail)
+    content = Content("text/plain", "Hello, {}".format(order_id))
+    mail = Mail(from_email, subject, to_email, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
 
 
 
