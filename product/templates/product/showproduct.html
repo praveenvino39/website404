@@ -24,7 +24,7 @@
         {% endfor %}
         {% endif %}
     </div>
-    <div class="site-section" style="padding-top:5px;">
+    <div class="site-section" style="padding-top:10px;color:black;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-6">
@@ -55,15 +55,17 @@
                 </div>
                 <div class="col-md-12 col-lg-6">
                     <h2 class="text-black">{{ product.title }}</h2>
-                    <h6>Hand-Sleve Round-Neck</h6>
-                    <br>
                     <p>{{ product.description }}.</p>
                     <p><strong class="text-primary h4">Rs.{{ product.price }}</strong></p>
                     <form action="{% url 'add_to_cart' product.slug %}" method="POST">
+                        <div class="row">
+                            <div class="col-lg-6">
                         <label for="color"><h5>Select color</h5></label>
                         <select required name="color" id="color">
                             <option value="{{ product.color }}" selected>{{ product.color }}</option>
                         </select><br>
+                                </div>
+                            <div class="col-lg-6">
                         <label for="size"><h5>Your size</h5></label>
                         <select required class="ml-4" name="size" id="size">
                             <option value="">None</option>
@@ -72,6 +74,8 @@
                             <option value="L">Large</option>
                             <option value="XL">X-Large</option>
                         </select>
+                                </div>
+                        </div>
                         <div id="showproduct">
                             <a href="#" class=" btn " onclick="chartalert();">What's your size?</a>
                         </div>
@@ -116,6 +120,39 @@
                     </form>
                 </div>
             </div>
+            <div class="row mt-3" style="color: black; align-content:center;">
+                <div class="col-lg-12 m-1 border pt-2">
+                    <div class="tab_text product-accordion active">
+                        <div class="heading">
+                            <a class="tab-heading" href="#product-description">
+                                <h5>Description</h5>
+                            </a>
+                        </div>
+                        <div class="panel product-accordion-content" id="product-description" style="display: block;">
+                            <p><strong>Product Information:</strong><br></p>
+                            <p>Material: 100% Cotton, 180 GSM<br><br>Style: Standard Fit, Round Neck, Short
+                                Sleeves<br><br>Wash Care: Machine wash. Wash in cold water, use a mild detergent. Dry in
+                                shade, do not iron directly or scrub on print.<br>Colour may vary slightly from the
+                                image displayed.</p></div>
+                    </div>
+                </div>
+                <div class="col-lg-12 m-1 border pt-2">
+                    <div class="tab_text product-accordion active">
+    <div class="heading">
+      <a class="tab-heading" href="#product-tab-1">
+        <h5>Shipping Details</h5>
+      </a>
+    </div>
+    <div class="panel product-accordion-content" id="product-tab-1" style="display: block;">
+      <p><strong></strong><strong>FREE SHIPPING </strong>within India&nbsp;for all orders above Rs. 499.</p>
+<p><strong>Estimated Delivery Time:</strong></p>
+<ul>
+<li>6-8 working Days within India.</li>
+</ul>
+    </div>
+  </div>
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -145,12 +182,14 @@ new Vue({
 })
 console.log()
 
-</script>
+
+    </script>
 </div>
 <style>
     .image:hover{
         cursor: pointer;
     }
+
 
 </style>
 {% endblock %}
