@@ -2,6 +2,7 @@
 {% block body %}
 {% include 'homepage/navbar.html' %}
 {% load static %}
+{% block title %}Sign-up |  Tee Factory{% endblock %}
 {% if messages %}
 {% for message in messages %}
 <div class="alert {% if messages.tags == error %} alert-danger {% endif %} alert-dismissible fade show" role="alert">
