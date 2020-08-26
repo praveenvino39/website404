@@ -62,7 +62,7 @@ def processorderguest(request, slug):
                 "mid": "nzZtLZ85936435132832",
                 "websiteName": "WEBSTAGING",
                 "orderId": str(order_id),
-                "callbackUrl": "https://casefactory.herokuapp.com/order/verify-payment",
+                "callbackUrl": "https://www.teesfactory.cf/order/verify-payment",
                 "txnAmount": {
                     "value": str(total),
                     "currency": "INR",
@@ -146,9 +146,9 @@ def processorder(request):
                 "mid": "nzZtLZ85936435132832",
                 "websiteName": "WEBSTAGING",
                 "orderId": str(order_id),
-                "callbackUrl": "https://casefactory.herokuapp.com/order/verify-payment",
+                "callbackUrl": "https://www.teesfactory.cf/order/verify-payment",
                 "txnAmount": {
-                    "value": '1.00',
+                    "value": str(total),
                     "currency": "INR",
                 },
                 "userInfo": {
