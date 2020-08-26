@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'Auth',
     'cart',
     'orders',
+    'django.contrib.sitemaps',
 
 
     #API
@@ -63,6 +64,8 @@ INSTALLED_APPS = [
 ]
 
 LOGIN_REDIRECT_URL = '/'
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
