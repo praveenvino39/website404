@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 from django.contrib.auth.models import User
-
+from django.shortcuts import reverse
 # Create your models here.
 
 
@@ -18,6 +18,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+    return reverse('showproduct', args=[str(self.slug)])
 
 class ProductImage(models.Model):
     title = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
