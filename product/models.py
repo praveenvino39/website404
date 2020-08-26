@@ -20,7 +20,7 @@ class Product(models.Model):
         return self.title
     
     def get_absolute_url(self):
-    return reverse('showproduct', args=[str(self.slug)])
+        return reverse('showproduct', args=[str(self.slug)])
 
 class ProductImage(models.Model):
     title = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
