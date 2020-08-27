@@ -15,6 +15,7 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('admin/', admin.site.urls),
+    path('robots.txt', include('robots.urls')),
     #PRODUCT
     path('product/', include('product.urls')),
     #ALL_AUTH
