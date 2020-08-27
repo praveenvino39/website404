@@ -60,7 +60,8 @@ INSTALLED_APPS = [
 
 
     #API
-    'rest_framework'
+    'rest_framework',
+    'robots'
 ]
 
 LOGIN_REDIRECT_URL = '/'
