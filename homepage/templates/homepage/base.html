@@ -2,16 +2,18 @@
 {% load static %}
 <html lang="en">
 <head>
+    <meta property="og:site_name" content="Tee Factory">
+    <meta property="og:type" content="product">
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
     <link rel="stylesheet" href="{% static 'homepage/fonts/icomoon/style.css' %}">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="{% static 'homepage/js/jquerymin.js' %}"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<link rel="stylesheet" href="{% static 'homepage/css/jqueryfan.css' %}" />
+<script src="{% static 'homepage/js/fanbox.js' %}"></script>
     <link rel="stylesheet" href="{% static 'homepage/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href=" {% static 'homepage/css/magnific-popup.css' %}">
     <link rel="stylesheet" href=" {% static 'homepage/css/jquery-ui.css' %}">
@@ -24,13 +26,13 @@
     <link rel="stylesheet" href="{% static 'homepage/css/style.css' %}">
     <title>{% block title %}{% endblock %}</title>
     <style>
-        .viewportadjustment{
+        .customclass{
             overflow-x: hidden !important;
         }
     </style>
 </head>
 <body>
-<div class="viewportadjustment">
+<div class="customclass">
 <script src="{% static 'homepage/js/vue.js' %}"></script>
 <div class="site-mobile-menu"></div>
 {% block body %}
@@ -45,9 +47,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <ul class="list-unstyled">
-                        <li><a href="#">Terms and Condition</a></li>
-                        <li><a href="#">Refund Policy</a></li>
-                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        <li><a href="#">Bulk order</a></li>
                         <li><a href="{% url 'cart' %}">Shopping cart</a></li>
                         <li><a href="{% url 'trackorder' %}">Track order</a></li>
                     </ul>
@@ -73,6 +73,7 @@
             <div class="block-5 mb-5">
                 <h3 class="footer-heading  mb-4 text-white">Contact Info</h3>
                 <ul class="list-unstyled">
+                    <li class="address text-white">12 Model Hutment Road, CIT Nagar, Chennai, Tamil Nadu, India.</li>
                     <li class="phone "><a href="tel://9551275395">+91 9551275395</a></li>
                     <li class="email text-white">societee@gmail.com</li>
                 </ul>
@@ -95,10 +96,9 @@
     <div class="row pt-5 mt-5 text-center">
         <div class="text-white col-md-12">
             <p>
-                Copyright ©
-                <script>document.write(new Date().getFullYear());</script>
-                All rights reserved | <a
-                    href="{% url 'homepage' %}" class="text-primary">Tees Factory</a>
+                Copyright © 2020
+                All rights reserved | Made with <i class="icon-heart" aria-hidden="true"></i> by <a
+                    href="{% url 'homepage' %}" class="text-primary"> Tee Factory</a>
             </p>
         </div>
         <div class="col-lg-12 col-md-12">
@@ -115,8 +115,8 @@
 <script src="{% static 'homepage/js/aos.js' %}"></script>
 <script src="{% static 'homepage/js/main.js' %}"></script>
 <script src="{% static 'homepage/js/slick.min.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+<script src="{% static 'homepage/js/sweetalert.js' %}"></script>
+<script src="{% static 'homepage/js/polyfill.js' %}"></script>
 </div>
 </div>
 </div>
