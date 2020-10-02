@@ -10,6 +10,7 @@
         {% endif %}
         <h3 class="text-success" >{{reponsemessage}}</h3>
         <h5 class="mb-5">Order ID: {{orderid}}</h5>
+        <a href={% url 'trackorder' %} class="btn btn-primary">track Order</a>
     </center>
 </div>
 {% endblock %}
